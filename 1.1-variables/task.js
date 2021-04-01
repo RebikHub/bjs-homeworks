@@ -7,9 +7,9 @@
 
 function averageMark(a, g, p) {
 	
-    // реализуйте здесь задание №1
+    let result = (a + g + p) / 3;
     
-	return // ваш ответ;
+	return result;
 }
 
 function sayHello(userName) {
