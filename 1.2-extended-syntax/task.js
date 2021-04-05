@@ -1,4 +1,4 @@
-function getResult(a,b,c){
+function getResult(a,b,c) {
     'use strict';
 
     let x = [];
@@ -36,17 +36,18 @@ function getAverageMark(marks){
     return averageMark;
 }
 
-function askDrink(name,dateOfBirthday){
+function askDrink(name,dateOfBirthday) {
     let todayDate = new Date('2021-04-05');
     let age;
     let result;
-    
+
     age = todayDate.getFullYear() - dateOfBirthday.getFullYear();
 
     if (age > 18) {
         result = `Не желаете ли олд-фэшн, ${name}?`;
     } else {
         result = `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;
-    }
+    };
+    
     return result;
 }
