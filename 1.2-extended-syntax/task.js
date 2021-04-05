@@ -1,6 +1,19 @@
 function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    // return x;
+    'use strict';
+
+    let x = [];
+    let D = Math.pow(b, 2) - 4 * a * c;
+
+    if (D > 0) {
+        x.push((- b + D) / (2 * a));
+        x.push((- b - D) / (2 * a));
+        return x;
+    } else if (D = 0) {
+        x.push((- b) / (2 * a));
+        return x;
+    };
+    return x;
+
 }
 
 function getAverageMark(marks){
