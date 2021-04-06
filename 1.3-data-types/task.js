@@ -8,9 +8,11 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     let payment = bodyCredit * (coefPercent + coefPercent / (Math.pow((1 + coefPercent), creditMonth) - 1));
     let totalAmount = payment * creditMonth;
     return +totalAmount.toFixed(2);
-}
+};
 
-function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    // return greeting;
-}
+function getGreeting(name = 'Аноним') {
+    if (name === '') {
+        return `Привет, мир! Меня зовут Аноним.`
+    };
+    return `Привет, мир! Меня зовут ${name}.`
+};
