@@ -1,42 +1,28 @@
-function getSolution(a, b, c) {
+function getSolutions(a, b, c) {
     const D = Math.pow(b, 2) - 4 * a * c;
-    // const resultSolution = {
-    //     D,
-    //     roots: []
-    // };
-
     if (D < 0) {
-        // resultSolution.D;
-        // resultSolution.roots;
-        // return resultSolution;
-        return {
-                D,
-                roots: []
-            };
-    } else if (D === 0) {
-        // let x1 = (- b) / (2 * a);
-        // resultSolution.D;
-        // resultSolution.roots.push(x1);
-        // return resultSolution;
         return {
             D,
-            roots: [(- b) / (2 * a)]
+            roots: []
+        };
+    } else if (D === 0) {
+        let x1 = (-b) / (2 * a);
+        return {
+            D,
+            roots: [x1]
         };
     } else {
-        // let x1 = (- b + Math.sqrt(D)) / (2 * a);
-        // let x2 = (- b - Math.sqrt(D)) / (2 * a);
-        // resultSolution.D;
-        // resultSolution.roots.push(x1, x2);
-        // return resultSolution;
+        let x1 = (-b + Math.sqrt(D)) / (2 * a);
+        let x2 = (-b - Math.sqrt(D)) / (2 * a);
         return {
             D,
-            roots: [((- b + Math.sqrt(D)) / (2 * a)), ((- b - Math.sqrt(D)) / (2 * a))]
+            roots: [x1, x2]
         };
     };
 };
 
 function showSolutionMessage(a, b, c) {
-    let result = getSolution(a, b, c);
+    let result = getSolutions(a, b, c);
     let text;
     if (result.D < 0) {
         text = 'Уравнение не имеет вещественных корней';
@@ -50,7 +36,3 @@ function showSolutionMessage(a, b, c) {
     console.log(text);
     console.log(getSolution(a, b, c));
 };
-showSolutionMessage(1, 5, 4);
-console.log(getSolution(1, 5, 1));
-// console.log(showSolutionMessage(2, 3, 1));
-// console.log({D: 9, roots:[]});
