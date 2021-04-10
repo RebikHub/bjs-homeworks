@@ -72,3 +72,16 @@ function getAverageScore(data) {
         return data;
     };
 };
+
+// Задача №3
+
+function getDecodedValue(secret) {
+    return (secret === 0) ? 'Родриго' : 'Эмильо';
+};
+
+function getPersonData(secretData) {
+    return {
+        firstName: getDecodedValue(secretData.aaa),
+        lastName: getDecodedValue(secretData.bbb)
+    };
+};
