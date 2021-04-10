@@ -1,3 +1,5 @@
+// Задача №1
+
 function getSolutions(a, b, c) {
     const D = Math.pow(b, 2) - 4 * a * c;
     if (D < 0) {
@@ -35,4 +37,38 @@ function showSolutionMessage(a, b, c) {
     console.log(`Значение дискриминанта: ${result.D}`);
     console.log(text);
     console.log(getSolution(a, b, c));
+};
+
+// Задача №2
+
+function getAverageMark(marks) {
+    if (marks.length === 0) {
+        return 0;
+    };
+    let avgMarks = 0;
+    for (let i = 0; i < marks.length; i++) {
+        avgMarks += marks[i];
+    };
+    return avgMarks / marks.length;
+};
+
+function getAverageScore(data) {
+    let avgMarks = getAverageMark;
+    let avgValue = 0;
+    let count = 0;
+
+    for (let key in data) {
+        if (data.hasOwnProperty(key)) {
+            count++;
+        };
+    };
+    for (let prop in data) {
+        data[prop] = avgMarks(data[prop]);
+        avgValue += data[prop];
+    };
+    if (count === 0) {
+        return { average: 0 };
+    } else if (data['average'] = avgValue / count) {
+        return data;
+    };
 };
