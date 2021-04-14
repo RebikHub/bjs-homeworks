@@ -36,9 +36,18 @@ function getAverageMark(marks) {
     return roundedAverage;
 };
 
-
+// Задача №3
 
 function checkBirthday(birthday) {
-    // код для задачи №3 писать здесь
-    // return verdict
-}
+    let now = new Date();
+    let date = Date.parse(birthday);
+    let diff = +now - date;
+    let years = Math.round(diff / 31536000000); // 31536000000 - миллисекунд в не високосном году
+    let leapYear = (Math.round(years / 4) * 86400000) / years; // 86400000 - на столько миллисекунд високосный год длиннее
+    let age = diff / (31536000000 + leapYear);
+
+    if (age > 18) {
+        return true;
+    };
+    return false;
+};
