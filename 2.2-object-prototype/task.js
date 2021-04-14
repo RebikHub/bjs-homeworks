@@ -22,10 +22,21 @@ String.prototype.isPalindrome = function() {
 let str = 'А роза упала на лапу Азора';
 console.log(str.isPalindrome());
 
+// Задача №2
+
 function getAverageMark(marks) {
-    // код для задачи №2 писать здесь
-    // return averageMark
-}
+    if (marks.length === 0) {
+        return 0;
+    };
+    let averageMark = 0;
+    for (let i = 0; i < marks.length; i++) {
+        averageMark += marks[i];
+    };
+    let roundedAverage = Math.round(averageMark / marks.length);
+    return roundedAverage;
+};
+
+
 
 function checkBirthday(birthday) {
     // код для задачи №3 писать здесь
