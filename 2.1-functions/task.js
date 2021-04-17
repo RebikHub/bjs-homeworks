@@ -68,7 +68,8 @@ function getAverageScore(data) {
     };
     if (count === 0) {
         return { average: 0 };
-    } else if (data['average'] = avgValue / count) {
+    } else {
+        data['average'] = avgValue / count;
         return data;
     };
 };
