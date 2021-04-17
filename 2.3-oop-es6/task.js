@@ -103,3 +103,56 @@ class Library {
         return null;
     };
 };
+
+// Задача №3
+
+class StudentLog {
+    constructor(name) {
+        this.name = name;
+        this.subjects = {};
+    };
+
+    getName() {
+        return this.name;
+    };
+
+    addGrade(grade, subject) {
+        if (grade <= 5 && grade >= 1) {
+            if (this.subjects.hasOwnProperty(subject)) {
+                this.subjects[subject].push(grade);
+                return this.subjects[subject].length;
+            };
+            this.subjects[subject] = [];
+            this.subjects[subject].push(grade);
+            return this.subjects[subject].length;
+        } else {
+            return `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`
+        };
+    };
+
+    getAverageBySubject(subject) {
+        if (this.subjects.hasOwnProperty(subject)) {
+            let avgGrades = 0;
+            for (let i = 0; i < this.subjects[subject].length; i++) {
+                avgGrades += this.subjects[subject][i];
+            };
+            return avgGrades / this.subjects[subject].length;
+        };
+        return 0;
+    };
+
+    getTotalAverage() {
+        let sumProps = 0;
+        let marks = 0;
+        for (let prop in this.subjects) {
+            for (let i = 0; i < this.subjects[prop].length; i++) {
+                marks += this.subjects[prop][i];
+            };
+            sumProps += this.subjects[prop].length;
+        };
+        if (marks === 0) {
+            return 0;
+        };
+        return marks / sumProps;
+    };
+};
