@@ -13,11 +13,10 @@ function parseCount(value) {
 
 function validateCount(value) {
     try {
-        parseCount(value);
+        return parseCount(value);
     } catch(err) {
         return err;
-    }
-    return parseCount(value);
+    };
 };
 
 // Задача №2
@@ -27,7 +26,7 @@ class Triangle {
         this.a = a;
         this.b = b;
         this.c = c;
-        if ((this.a + this.b) < this.c || (this.b + this.c) < this.a || (this.a + this.c) < this.b) {
+        if ((a + b) < c || (b + c) < a || (a + c) < b) {
             throw new Error('Треугольник с такими сторонами не существует');
         };
     };
@@ -47,7 +46,7 @@ function getTriangle(a, b, c) {
     try {
         return new Triangle(a, b, c);
     } catch {
-        const triangle = {
+        return {
             getPerimeter() {
                 return 'Ошибка! Треугольник не существует';
             },
@@ -55,6 +54,5 @@ function getTriangle(a, b, c) {
                 return 'Ошибка! Треугольник не существует';
             }
         };
-       return triangle;
     };
 };
