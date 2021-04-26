@@ -33,26 +33,56 @@ function getTotalDamage() {
     });
 };
 
-// function getValuestCountToSumValues(arr, sum) {
-//     let sumIndex = 0;
-//     if (arr.reduce((acc, number) => {
-//         sumIndex = acc + number;
-//         return sumIndex;
-//     }) >= sum) {
-//         return sumIndex;
-//     };
+function getValuestCountToSumValues(arr, sum) {
+    let count = 0;
+    if (arr.reduce((acc, num) => acc + num, 0) > sum) {
+        return arr.map(element => {
+            count += element;
+            return count;
+        }).filter(item => sum > item).length + 1;
+    };
+    return arr.length;
+};
 
-  // let sumIndex = 0;
-    // let newArr = [];
+// Задача №2
 
-    // for (let i = 0; i < arr.length; i++) {
-    //     sumIndex += arr[i];
-    //     if (sum <= sumIndex) {
-    //         return newArr.length + 1;
-    //     }
-    //     newArr.push(arr[i]);
-    // }
-    // return arr.length;
-// }
+function sleep(milliseconds) {
+    let e = new Date().getTime() + milliseconds;
+    while (new Date().getTime() <= e) {}
+}
 
-// console.log(getValuestCountToSumValues([1,2,3,5,2,7,3,5,2], 10));
+function sum(...args) {
+    // Замедление на половину секунды.
+    sleep(100); // Можно использовать другое значение замедления.
+    return args.reduce((sum, arg) => {
+        return sum += +arg;
+    }, 0);
+}
+
+function compareArrays(arr1, arr2) {
+    if (arr1.length === arr2.length) {
+        return arr1.every((item, index) => item === arr2[index]);
+    };
+    return false;
+}
+
+function memorize(fn, limit) {
+    const memory = [... {}];
+    fn = {
+        args: [],
+        result: limit
+    };
+    return fn;
+}
+
+
+const mSum = memorize(sum, 5); // 5 результатов может хранится в памяти
+
+// Вызов этих функций даёт один и тот же результат
+sum(3, 4); // 7
+/* 
+  разница только в том, что mSum запоминает результат (7)
+  и повторно не делает вычисления
+ */
+mSum(3, 4); // 7
+console.log(memorize(sum(3, 4)), 5);
