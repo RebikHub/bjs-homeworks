@@ -52,11 +52,8 @@ function sleep(milliseconds) {
 }
 
 function sum(...args) {
-    // Замедление на половину секунды.
-    sleep(100); // Можно использовать другое значение замедления.
-    return args.reduce((sum, arg) => {
-        return sum += +arg;
-    }, 0);
+    sleep(100);
+    return args.reduce((sum, arg) => sum + arg, 0);
 }
 
 function compareArrays(arr1, arr2) {
@@ -67,22 +64,23 @@ function compareArrays(arr1, arr2) {
 }
 
 function memorize(fn, limit) {
-    const memory = [... {}];
-    fn = {
-        args: [],
-        result: limit
+    const memory = [];
+    fn = function sum(...args) {
+        let obj = {
+            args: [],
+        };
+        obj.args = Array.from(arguments);
+        obj.result = args.reduce((sum, arg) => sum + arg, 0);
+        if (memory.some((item) => compareArrays(item.args, Array.from(arguments)))) {
+        memory.push(obj);
+        } else {
+            return obj.result;
+        }
+        sleep(100);
+        return args.reduce((sum, arg) => sum + arg, 0);
+    };
+    if (memory.length > limit) {
+        memory.shift();
     };
     return fn;
 }
-
-
-const mSum = memorize(sum, 5); // 5 результатов может хранится в памяти
-
-// Вызов этих функций даёт один и тот же результат
-sum(3, 4); // 7
-/* 
-  разница только в том, что mSum запоминает результат (7)
-  и повторно не делает вычисления
- */
-mSum(3, 4); // 7
-console.log(memorize(sum(3, 4)), 5);
