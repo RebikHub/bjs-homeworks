@@ -65,17 +65,18 @@ function compareArrays(arr1, arr2) {
 
 function memorize(fn, limit) {
     const memory = [];
-    if (memory.length > limit) {
-        memory.shift();
-    };
     return function () {
-        if (memory.find((item) => compareArrays(item.args, Array.from(arguments)))) {
-            return memory.find((item) => compareArrays(item.args, Array.from(arguments))).result;
+        const findElement = memory.find((item) => compareArrays(item.args, Array.from(arguments)));
+        if (findElement) {
+            return findElement.result;
         };
         let obj = {};
         obj.args = Array.from(arguments);
         obj.result = fn(...arguments);
         memory.push(obj);
+        if (memory.length > limit) {
+            memory.shift();
+        };
         return obj.result;
     };
 };
