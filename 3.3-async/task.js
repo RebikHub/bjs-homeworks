@@ -33,10 +33,10 @@ class AlarmClock {
     };
 
     start() {
-        let currentDate = this.getCurrentFormattedTime();
+        let currentDate = this.getCurrentFormattedTime;
 
         function checkClock(call) {
-            if (currentDate === call.time) {
+            if (currentDate() === call.time) {
                 return call.callback();
             };
             return;
